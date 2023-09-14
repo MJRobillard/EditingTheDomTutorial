@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Editing the DOM</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+     <div id ="Opener">
+        <h1>Editing the DOM for Oski the Eternal</h1>
+        <h2>Problem: Oskihas lots and lots of exes, he wants a webpage to cataolgue them</h2>
+
+  
+        <img src="Oski.jpg">
+        <p></p>
+        
+        <menu>
+            <li> <button id = "All">All  </button ></li>
+            <li> <button id = "Sophomores">Sophomores </button ></li>
+            <li> <button id = "Juniors">Juniors </button ></li>
+            <li> <button id = "Seniors">Seniors </button ></li>
+              <li> <button id = "Remove">Remove </button ></li>
+
+        </menu>
+        <div >
+          <table id ="ExShowcase">
+            <tr>
+              <Th>Name</Th>
+              <Th>Grade</Th>
+              <Th>Favourite Food</Th>
+              <Th>Breakup Reason </Th>
+
+            </tr>
+
+          </table>
+
+    </div>
+    </div>
+    
+    <script src="index.js"></script>
+    <script>
+        document.getElementsByTagName("p")[0].innerHTML = "Oski just needs to find out why they dump him";
+        const table = document.getElementById("ExShowcase");
+
+        function addExes(criteria){
+            for (let i = 0; i < exesList.length; i++) {
+              const entry = exesList[i];
+
+              if (entry.grade === criteria || criteria =="all"){
+                const tr = document.createElement("tr");                   //<tr>
+
+                const TableName = document.createElement("td");           //<td>
+                const TableGrade = document.createElement("td");          //<td>
+                const TableFood = document.createElement("td");          //<td>
+                const TableReason = document.createElement("td");          //<td>
+
+                TableName.innerHTML = entry.name;             //<td name>
+                TableGrade.innerHTML = entry.grade;            //<td grade>
+                TableFood.innerHTML = entry.favoriteFood;            //<td food>
+                TableReason.innerHTML = entry.breakupReason;            //<td breakupReason>
+
+
+
+                tr.appendChild(TableName);          //<tr>
+                tr.appendChild(TableGrade);           //<td>
+                tr.appendChild(TableFood);
+                tr.appendChild(TableReason);
+                table.appendChild(tr);
+                  //table
+                //    <tr>
+             // <tr>Name</Th>
+              //<tr>Grade</Th>
+             // <tr>FavouriteFood</Th>
+              //<tr>BreakupReason </Th>
+
+           // </tr>
+
+              };
+            };
+        };
+
+        function removeList(){
+          const elementsToChange = document.querySelectorAll('tr');
+          for (let i = 1; i < elementsToChange.length; i++) {
+            const currentElement = elementsToChange[i];
+            currentElement.innerText = '';
+          }
+        }
+        //removeList();
+        const SophomoreButton = document.getElementById("Sophomores");
+        
+        SophomoreButton.addEventListener("click", function () {
+          removeList();
+          addExes("Sophomore");
+        });
+        
+        const JuniorButton = document.getElementById("Juniors");
+        JuniorButton.addEventListener("click", function () {
+          removeList();
+
+          addExes("Junior");
+        });
+        
+        const SeniorButton = document.getElementById("Seniors");
+        SeniorButton.addEventListener("click", function () {
+          removeList();
+
+          addExes("Senior");
+        });
+
+        const AllButton = document.getElementById("All"); 
+        AllButton.addEventListener("click", function () {
+          removeList();
+
+          addExes("all");  
+        });
+        
+        const RemoveButton = document.getElementById("Remove");
+        RemoveButton.addEventListener("click", removeList);
+        
+    </script>
+  </body>
+</html>
