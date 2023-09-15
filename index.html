@@ -39,15 +39,17 @@
           </table>
 
     </div>
+
     </div>
     
     <script src="index.js"></script>
     <script>
-        document.getElementsByTagName("p")[0].innerHTML = "Oski just needs to find out why they dump him";
+        document.getElementsByTagName("p")[0].innerHTML = "Oski just needs to find out why they dump him"; //starting example to show how to edit the DOM in an instance
         const table = document.getElementById("ExShowcase");
 
+        //Edit the DOM iteratively 
         function addExes(criteria){
-            for (let i = 0; i < exesList.length; i++) {
+            for (let i = 0; i < exesList.length; i++) { //exesList defined in index.js so this wouldnt get crowded for demonstration 
               const entry = exesList[i];
 
               if (entry.grade === criteria || criteria =="all"){
@@ -83,6 +85,7 @@
             };
         };
 
+        //example to show how to Edit the DOM iteratively 
         function removeList(){
           const elementsToChange = document.querySelectorAll('tr');
           for (let i = 1; i < elementsToChange.length; i++) {
@@ -91,6 +94,8 @@
           }
         }
         //removeList();
+
+        //Event Listeners Click for the buttons then launching the apropriate functions using anonymous functions 
         const SophomoreButton = document.getElementById("Sophomores");
         
         SophomoreButton.addEventListener("click", function () {
