@@ -24,6 +24,9 @@
             <li> <button id = "Juniors">Juniors </button ></li>
             <li> <button id = "Seniors">Seniors </button ></li>
               <li> <button id = "Remove">Remove </button ></li>
+                <li> <input id = "categoryInput" ></li>
+                <li> <button id = "categoryInputSubmit">Enter </button ></li>
+
 
         </menu>
         <div >
@@ -52,7 +55,7 @@
             for (let i = 0; i < exesList.length; i++) { //exesList defined in index.js so this wouldnt get crowded for demonstration 
               const entry = exesList[i];
 
-              if (entry.grade === criteria || criteria =="all"){
+              if (entry.grade === criteria || criteria ==="all" || entry.favoriteFood === criteria || entry.name === criteria){
                 const tr = document.createElement("tr");                   //<tr>
 
                 const TableName = document.createElement("td");           //<td>
@@ -126,6 +129,14 @@
         
         const RemoveButton = document.getElementById("Remove");
         RemoveButton.addEventListener("click", removeList);
+
+        const categoryInputButton = document.getElementById("categoryInputSubmit");
+        categoryInputButton.addEventListener("click", function () {
+          const categoryInputHTML = document.getElementById("categoryInput");
+          const categoryValue = categoryInputHTML.value;
+          removeList();
+          addExes(categoryValue);
+        });
         
     </script>
   </body>
